@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "test": "jest",
-    "lint": "eslint --fix ./src"
+    "test:ci": "jest --ci",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint --fix ./src"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",

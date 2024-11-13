@@ -1,0 +1,21 @@
+name: Dev Pipeline
+run-name: ${{ github.actor }} is checking in codes 🚀
+on: [push]
+jobs:
+  Tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "💡 Setting up Node.js version 22..."
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.10.0'
+      - run: echo "🖥️ Installing dependencies..."
+      - run: npm install
+      - run: echo "🖥️ Linting..."
+      - run: npm run lint:fix
+      - run: echo "🖥️ Unit Testing..."
+      - run: npm run test:ci
+      - run: echo "🍏 This job's status is ${{ job.status }}."
